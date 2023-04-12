@@ -1,9 +1,8 @@
 import cors from "cors";
 import * as dotenv from "dotenv";
 import bodyParser from "body-parser";
-
 import express, { Application } from "express";
-``;
+
 import Logger from "./lib/logger";
 import userRoutes from "./routes/user.route";
 import morganMiddleware from "./config/morganMiddleware";

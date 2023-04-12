@@ -15,11 +15,17 @@ import { User } from "../interfaces/db/user.interface";
  * @returns Promise<WithId<Document>>
  */
 export const getAllUsersDB = async (): Promise<WithId<Document>[]> => {
-  await client.connect();
-  const db = client.db(dbName);
-  const collection = db.collection("users");
-  const users = await collection.find({}).toArray();
-  client.close();
+  let users: any;
+  try {
+    console.log("Get all users");
+    await client.connect();
+    const db = client.db(dbName);
+    const collection = db.collection("users");
+    users = await collection.find({}).toArray();
+    client.close();
+  } catch (error) {
+    console.log(error)
+  }
   return users;
 };
 
